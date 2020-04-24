@@ -12,7 +12,7 @@ import (
 const (
 	versionMajor = 1
 	versionMinor = 0
-	versionBugfix = 0
+	versionBugfix = 1
 	configPathDefault = "~/slack-status"
 )
 

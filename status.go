@@ -81,6 +81,11 @@ func (s *Status) Set(workspace Workspace) error {
 		if _, err := api.SetSnooze(s.Duration); err != nil {
 			return errors.Wrap(err, "failed to set snooze in: " + workspace.Name)
 		}
+	} else {
+		log.Printf("[%s] resetting do not disturb\n", workspace.Name)
+		if _, err := api.SetSnooze(0); err != nil {
+			return errors.Wrap(err, "failed to reset snooze in: " + workspace.Name)
+		}
 	}
 
 	return nil

@@ -1,5 +1,6 @@
 # Slack Status
-Change your presence, status and do not disturb settings in multiple Slack workspaces.
+Change your presence, status, do not disturb and profile picture settings in multiple Slack workspaces using only 
+one command.
 
 This is a complete re-write of [dstokes/slack-status](https://github.com/dstokes/slack-status).
 
@@ -26,16 +27,17 @@ Usage:
   slack-status [flags]
 
 Flags:
-      --away               Set your status as away
-  -c, --config string      Config file (default "~/slack-status")
-      --dnd                Set status as do not disturb
-  -d, --duration string    Set status duration, units can be: [m,h]. Leave blank for for no expiration
-  -e, --emoji string       Emoji to set when setting your status (default ":male-technologist:")
-  -g, --group string       Limit setting of status to a group
-  -h, --help               help for slack-status
-  -m, --message string     Status message
-  -v, --version            Show version number
-  -w, --workspace string   Limit setting of status to a workspace
+      --away                Set your status as away
+  -c, --config string       Config file (default "~/slack-status")
+      --dnd                 Set status as do not disturb
+  -d, --duration string     Set status duration, units can be: [m,h]. Leave blank for for no expiration
+  -e, --emoji string        Emoji to set when setting your status (default ":male-technologist:")
+  -g, --group string        Limit setting of status to a group
+  -h, --help                help for slack-status
+  -m, --message string      Status message
+  -p, --profilePic string   Profile picture path (valid formats: jpeg, jpg, png & gif)
+  -v, --version             Show version number
+  -w, --workspace string    Limit setting of status to a workspace
 ```
 
 ### Examples
@@ -57,6 +59,11 @@ slack-status -m "lectures" -d 2h45m --dnd --emoji ":books:" -g work
 Clears your status and sets it back to _Active_: 
 ```shell
 slack-status
+```
+
+Set your custom status to _driving_ and custom car emoji with new profile picture in _~/driving.jpeg_:
+```shell
+slack-status -p ~/driving.jpeg -m "driving" --emoji :car:
 ```
 
 ### Configuration

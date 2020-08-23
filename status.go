@@ -18,6 +18,8 @@ type Status struct {
 	Group string
 	// Limit to a Workspace
 	Workspace string
+
+	ProfilePicturePath string
 }
 
 func (s *Status) Apply(workspaces []Workspace) (workspacesApplied int, err error) {
@@ -79,12 +81,20 @@ func (s *Status) Set(workspace Workspace) error {
 	if s.DoNotDisturb {
 		log.Printf("[%s] setting do not disturb for %d minute(s)\n", workspace.Name, s.Duration)
 		if _, err := api.SetSnooze(s.Duration); err != nil {
-			return errors.Wrap(err, "failed to set snooze in: " + workspace.Name)
+			return errors.Wrap(err, "failed to set snooze in: "+workspace.Name)
 		}
 	} else {
 		log.Printf("[%s] resetting do not disturb\n", workspace.Name)
 		if _, err := api.SetSnooze(0); err != nil {
-			return errors.Wrap(err, "failed to reset snooze in: " + workspace.Name)
+			return errors.Wrap(err, "failed to reset snooze in: "+workspace.Name)
+		}
+	}
+
+	if s.ProfilePicturePath != "" {
+		// Set profile picture
+		log.Printf("[%s] setting profile picture: %s\n", workspace.Name, s.ProfilePicturePath)
+		if err := api.SetUserPhoto(s.ProfilePicturePath, slack.UserSetPhotoParams{}); err != nil {
+			return errors.Wrap(err, "failed to set profile picture in: "+workspace.Name)
 		}
 	}
 

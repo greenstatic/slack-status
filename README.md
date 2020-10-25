@@ -33,7 +33,7 @@ Dependencies:
 
 Build from source:
 ```shell
-$ go get github.com/greenstatic/slack-status
+$ go install github.com/greenstatic/slack-status
 ```
 ### Installing in a Slack Workspace
 In case you are worried about all these tokens, please read the [How it Works](#how-it-works) section to understand 

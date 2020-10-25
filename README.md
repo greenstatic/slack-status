@@ -31,7 +31,7 @@ We do not need any other scopes which could cause security issues.
 Dependencies:
 * Go
 
-Build from source:
+Install from source:
 ```shell
 $ go install github.com/greenstatic/slack-status
 ```

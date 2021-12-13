@@ -10,7 +10,7 @@ import (
 const (
 	versionMajor  = 2
 	versionMinor  = 0
-	versionBugfix = 0
+	versionBugfix = 1
 )
 
 var rootCmd = &cobra.Command{

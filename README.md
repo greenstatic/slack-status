@@ -43,11 +43,24 @@ You will need to do this for each Slack workspace you wish to specify control us
 
 #### I do not yet have a Slack App (or access to an App's clientId & clientSecret)
 1. Visit [https://api.slack.com/apps](https://api.slack.com/apps)
-2. Click on **Create New App**. 
-   Name the app something like _slack-status_, select your desired workspace and create your app.
-3. Scroll to the top and select _Install App to Workspace_.
-4. Once you are taken to the main menu of the app, on the left side of the menu under **Features**, select 
-   **OAuth & Permissions**. Under **Redirect URLs** add `http://localhost:3030`.
+2. Click on **Create New App**, then follow **From an app manifest**. Select your desired workspace and hit **Next**.
+3. Replace the YAML manifest template with the following:
+```
+_metadata:
+  major_version: 1
+  minor_version: 1
+display_information:
+  name: slack-status
+settings:
+  org_deploy_enabled: false
+  socket_mode_enabled: false
+  token_rotation_enabled: false
+oauth_config:
+  redirect_urls:
+    - http://localhost:3030
+```
+4. Click **Next**, then **Create** to finish the app creation.
+5. Scroll to **App Credentials** and copy *Client ID* as well as *Client Secret*.
 
 #### I have a Slack App now
 Now that you have access to your Slack's App `clientId` and `clientSecret`, run:

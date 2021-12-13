@@ -1,13 +1,14 @@
 package main
 
 import (
-	"github.com/pkg/errors"
-	"github.com/slack-go/slack"
-	"github.com/spf13/cobra"
 	"log"
 	"path/filepath"
 	"strings"
 	"time"
+
+	"github.com/pkg/errors"
+	"github.com/slack-go/slack"
+	"github.com/spf13/cobra"
 )
 
 type Status struct {
@@ -98,7 +99,7 @@ When enabling do not disturb (dnd) you must specify a duration.
 			log.Fatal(err)
 		}
 
-		log.Printf("Successfully applied to %d wokrspaces\n", workspacesApplied)
+		log.Printf("Successfully applied to %d workspace(s)\n", workspacesApplied)
 	},
 }
 
@@ -106,7 +107,7 @@ func init() {
 	slackSetCmd.PersistentFlags().Bool("away", false, "Set your status as away")
 	slackSetCmd.PersistentFlags().StringP("group", "g", "", "Limit setting of status to a group")
 	slackSetCmd.PersistentFlags().StringP("workspace", "w", "", "Limit setting of status to a workspace")
-	slackSetCmd.PersistentFlags().StringP("duration", "d", "", "Set status duration, units can be: [m,h]. Leave blank for for no expiration")
+	slackSetCmd.PersistentFlags().StringP("duration", "d", "", "Set status duration, units can be: [m,h]. Leave blank for no expiration")
 	slackSetCmd.PersistentFlags().Bool("dnd", false, "Set status as do not disturb")
 	slackSetCmd.PersistentFlags().StringP("emoji", "e", ":male-technologist:", "Emoji to set when setting your status")
 	slackSetCmd.PersistentFlags().StringP("message", "m", "", "Status message")
